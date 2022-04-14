@@ -29,6 +29,7 @@ function Account({navigation}){
         try {
             let email = "";
             let password = "";
+            let login = 0;
 
             await AsyncStorage.getItem('email', (err, result) => {
                 email = JSON.parse(result);
@@ -38,7 +39,11 @@ function Account({navigation}){
                 password = JSON.parse(result);
             });
 
-            if(email !== "" && password !== ""){
+            await AsyncStorage.getItem('login', (err, result) => {
+                login = JSON.parse(result);
+            });
+
+            if(email !== "" && password !== "" && login === 1){
                 loginMethod('login',email,password);
                   navigation.dispatch(
                     StackActions.replace('AccountSettingScreen',{navigation:navigation})
@@ -67,6 +72,7 @@ function Account({navigation}){
 
                 if(response.data.status !== "error"){
                     try {
+                        await AsyncStorage.setItem('login',JSON.stringify(1));
                         await AsyncStorage.setItem('email',JSON.stringify(txtEmail));
                         await AsyncStorage.setItem('password',JSON.stringify(txtPassword));
                         navigation.dispatch(
@@ -80,6 +86,7 @@ function Account({navigation}){
                 else{
                     console.log("email veya şifre yanlış")
                     alert("Email veya şifre yanlış!");
+                    await AsyncStorage.setItem('email',JSON.stringify(0));
                 }
                 return response;
                 
