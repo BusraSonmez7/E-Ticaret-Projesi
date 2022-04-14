@@ -183,7 +183,8 @@ const accountStyle=StyleSheet.create({
     },
     mainViewStyle:{
         flex:1,
-        marginStart:40,
+        paddingStart:40,
+        backgroundColor: 'white'
     },
     emailViewStyle:{
         flexDirection:"row",
@@ -227,6 +228,7 @@ const accountStyle=StyleSheet.create({
     },
     passwordStyle:{
         color:"black",
+        width: 200,
     }
     
 })
