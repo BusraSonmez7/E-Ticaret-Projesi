@@ -14,7 +14,6 @@ import ProductDetail from "../pages/ProductDetail";
 import AccountRegister from "../pages/Account/AccountRegister";
 import AccountSetting from "../pages/Account/AccountSetting/AccountSettings";
 import MemberInfo from "../pages/Account/AccountSetting/MemberInfo";
-import NarEvimProvider from "../context/provider";
 import Favorite from "../pages/Account/AccountSetting/Favorite";
 import ChangePassword from "../pages/Account/AccountSetting/ChangePassword";
 import Address from "../pages/Account/AccountSetting/Address";
@@ -114,7 +113,6 @@ const bottomIcon = (focused,size,iconName, title) => {
 
 function BottomTab(){
   return(
-    <NarEvimProvider>
       
       <NavigationContainer>
 
@@ -176,7 +174,6 @@ function BottomTab(){
 
       </NavigationContainer>
 
-    </NarEvimProvider>
   );
 }
 
